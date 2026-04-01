@@ -1,1 +1,127 @@
-# basic_local_chatbot_rag
+# Complete Setup Guide for Your Ollama Chatbot on Windows
+
+## Step 1: Install Python
+
+1. Download Python from **https://www.python.org/downloads/**
+2. Run the installer
+3. ✅ **Check "Add Python to PATH"** during installation
+4. Click **Install Now**
+
+---
+
+## Step 2: Install Ollama Application
+
+1. Go to **https://ollama.com/download/windows**
+2. Download and run the installer
+3. **Restart your computer** after installation
+
+---
+
+## Step 3: Verify Ollama Installation
+
+1. Press `Win + R`, type `cmd`, press Enter
+2. Run:
+
+```cmd
+ollama --version
+```
+
+If you see a version number, Ollama is installed correctly.
+
+---
+
+## Step 4: Start Ollama Service (Keep Running in Background)
+
+Ollama runs as a background service. You can start it by:
+
+```cmd
+ollama serve
+```
+
+> ⚠️ **Important:** Keep this terminal window open! Ollama must be running in the background for your chatbot to work.
+
+Alternatively, Ollama may start automatically after installation. You can check by looking for the Ollama icon in your system tray (bottom-right corner).
+
+---
+
+## Step 5: Pull the AI Model
+
+Open a **new Command Prompt** window (keep the `ollama serve` window open) and run:
+
+```cmd
+ollama pull llama3.2:1b
+```
+
+Wait for the download to complete.
+
+---
+
+## Step 6: Set Up Your Project
+
+1. Open Command Prompt and navigate to your project folder:
+
+```cmd
+cd A:\internship\task1
+```
+
+2. Create a virtual environment:
+
+```cmd
+python -m venv venv
+```
+
+3. Activate the virtual environment:
+
+```cmd
+venv\Scripts\activate.bat
+```
+
+4. Install dependencies:
+
+```cmd
+pip install -r requirements.txt
+```
+
+---
+
+## Step 7: Run Your Chatbot
+
+Make sure Ollama is running in the background, then:
+
+```cmd
+python main.py
+```
+
+---
+
+## Summary Checklist
+
+| Step | Command / Action |
+|------|------------------|
+| Open terminal | Use **Command Prompt** (not Git Bash) |
+| Start Ollama | `ollama serve` (keep this open) |
+| Pull model | `ollama pull llama3.2:1b` |
+| Activate venv | activate.bat |
+| Run chatbot | `python main.py` |
+
+---
+
+## Troubleshooting
+
+| Problem | Solution |
+|---------|----------|
+| `'ollama' is not recognized` | Restart PC or add Ollama to PATH |
+| `model not found (404)` | Run `ollama pull llama3.2:1b` |
+| `connection refused` | Run `ollama serve` in another terminal |
+| Git Bash doesn't work | Use **Command Prompt** instead |
+
+---
+
+## Useful Ollama Commands
+
+```cmd
+ollama list          # Show downloaded models
+ollama pull <model>  # Download a model
+ollama rm <model>    # Delete a model
+ollama serve         # Start the Ollama service
+ollama --version     # Check Ollama version
